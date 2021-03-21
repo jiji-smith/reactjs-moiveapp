@@ -27,3 +27,9 @@ class App extends React.Component{
 }
 
 export default App;
+
+
+// Mounting / updating / unmounting
+// Mounting - constructor(), render(), componentDidMount() 순서로 실행됨
+// Updating - data가 나로 인해 변할 때,  render(), componenetDidUpdate()
+// Unmounting - component 죽을 때.
