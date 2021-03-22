@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import Movie from "./movie"
+
 // import PropTypes from "prop-types";
 
 class App extends React.Component {
@@ -9,21 +11,37 @@ class App extends React.Component {
   };
 
   //async 랑 await는 axios가 다 loading 될 때까지 기다리시오 라는 명령어 같은 느낌.
-  getMovies = async() => {
+  getMovies = async () => {
+    // cosnt moives = awaite axios get("URL") 인데 우리가 원하는 datark data.data.movies에 있었으니 ES6에서는 저렇게 바꿀수 있음
     const {
       data: {
-        data: {movies}
+        data: { movies }
       }
-    } = await axios.get("https://yts-proxy.now.sh/list_movies.json")
-    console.log(movies);
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating")
+    this.setState({ movies, isLoading: false })
   }
   componentDidMount() {
     this.getMovies();
   }
 
   render() {
-    const { isLoading } = this.state;
-    return <div>{isLoading ? "Loading.." : "We are ready"}</div>;
+    const { isLoading, movies } = this.state;
+    return (
+    <div>
+      {isLoading
+       ? "Loading.."
+       : movies.map(movie => (
+          <Movie
+            key={movie.id}
+            id={movie.id}
+            year={movie.year}
+            title={movie.title}
+            summary={movie.summary}
+            poster={movie.medium_cover_image}
+          />
+       ))}
+    </div>
+    );
   }
 }
 
