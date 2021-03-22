@@ -6,6 +6,7 @@ import "./movie.css"
 
 // import PropTypes from "prop-types";
 
+// 더이상 state를 갖기위해 class componet를 가질 필요는 없다. react hook이라는 것때문에
 class App extends React.Component {
   state = {
     isLoading: true,
