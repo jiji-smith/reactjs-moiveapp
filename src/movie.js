@@ -10,8 +10,9 @@ function Movie({ year, title, summary, poster, genres }) {
                 <h3 className="movie_title">{title}</h3>
                 <h5 className="movie_year">{year}</h5>
                 <ul className="movie_genres">
-                    {genres.map(genre => (
-                        <li className="genres_genre">{genre}</li>
+                    {genres.map((genre, index) => (
+                        // Each child in a list should have a unique "key" prop - index 라는 list에 원래있는 key를 준다
+                        <li key={index} className="genres_genre">{genre}</li>
                     ))}
                 </ul>
 

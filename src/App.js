@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./movie"
+import "./app.css"
+import "./movie.css"
 
 // import PropTypes from "prop-types";
 
