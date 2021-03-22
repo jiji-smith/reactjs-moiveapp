@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Route}  from "react-router-dom";
 import Home from "./routes/home";
 import About from "./routes/about";
+import Detail from "./routes/detail";
 import Navigation from "./components/navigation";
+// import"./App.css";
 
 function App(){
   return (
@@ -11,6 +13,7 @@ function App(){
     <Navigation />
     <Route path="/" exact={true} component={Home} />
     <Route path="/about" component={About}/>
+    <Route path="/movie/:id" component={Detail} />
     </BrowserRouter>
   );
 }
